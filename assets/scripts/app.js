@@ -8,7 +8,7 @@
 
 const authEvents = require('./auth/events')
 const surveyEvents = require('./surveys/events.js')
-
+const questionEvents = require('./questions/events.js')
 // going to colaberate with Béthy for sign-up/sign-in
 $(() => {
   // // your JS code goes here
@@ -47,6 +47,11 @@ $(() => {
   $('#take-surveys').on('click', surveyEvents.onTakeSurveys)
   $('#show-my-surveys').on('click', surveyEvents.onGetSurveys)
   $('.hide-on-signed-out').hide()
+
+  $('#create-question-link').on('click', () => $('#create-question-modal').modal('show'))
+  $('#answer-questions').on('click', questionEvents.onAskQuestion)
+
   // pull in event handlers from surveys/events.js
   surveyEvents.addHandlers()
+  questionEvents.addQuestionHandlers()
 })

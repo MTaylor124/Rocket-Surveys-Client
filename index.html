@@ -24,17 +24,13 @@
         <!-- These contents will be revealed when the user clicks on "Username" -->
         <div class="dropdown-menu">
           <a class="dropdown-item" id="create-survey-link" href="#">Create Survey</a>
-          <a class="dropdown-item" id="take-surveys" href="#">Take Survey</a>
+          <a class="dropdown-item" id="create-question-link" href="#">Ask Question</a>
+          <a class="dropdown-item" id="take-surveys" href="#">Take Surveys</a>
+          <a class="dropdown-item" id="take-questions" href="#">Answer Response Question</a>
           <a class="dropdown-item" id="show-my-surveys" href="#">View My Surveys</a>
+          <a class="dropdown-item" id="show-my-questions" href="#">View My Questions</a>
         </div>
       </div>
-      <!-- <a href="#" class="navbar-item" id="change-password">Change Password</a>
-      <a href="#" class="navbar-item" id="sign-out">Sign Out</a> -->
-      <!-- Button trigger modal -->
-      <!-- <button type="button" class="btn btn-primary change-password-top" data-toggle="modal" data-target="#exampleModal">
-        Change Password
-      </button> -->
-
 
       <!-- Nav link trigger for Change Password Modal -->
       <a href="#" class="navbar-item change-password-top" data-toggle="modal" data-target="#create-pass-modal">
@@ -70,10 +66,6 @@
         </div>
       </div>
 
-      <!-- <form id="sign-out">
-        <a href="#" class="navbar-item">Sign Out</a>
-      </form> -->
-
       <!-- Nav Link Trigger for Sign Out -->
       <a href="#" id="sign-out" class="navbar-item">Sign Out</a>
     </nav>
@@ -99,7 +91,7 @@
             <form id="create-survey">
               <div class="form-group">
                 <!-- Survey Title Input -->
-                <input type="text" class="form-control" name="survey[title]" placeholder="Title" required>
+                <!-- <input type="text" class="form-control" name="survey[title]" placeholder="Title" required> -->
               </div>
               <div class="form-group">
                 <!-- Survey Question Input -->
@@ -116,6 +108,41 @@
       </div>
     </div>
 
+    <!-- CREATE OPEN SURVEY MODAL -->
+    <div class="modal fade" id="create-question-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create New Open-Ended Question</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- This form creates a POST request to /surveys. This will send a survey
+            title and a question. Both fields are required.-->
+            <p class="create-survey-failure"></p>
+            <form id="create-question">
+              <div class="form-group">
+                <!-- Survey Title Input -->
+                <!-- <input type="text" class="form-control" name="question[title]" placeholder="Title" required> -->
+              </div>
+              <div class="form-group">
+                <!-- Survey Question Input -->
+                <input type="text" class="form-control" name="question[question]" placeholder="Open response question" required>
+              </div>
+              <!-- Closes the survey WITH submit -->
+              <button type="submit" id="submit-create-open" class="btn btn-primary">Submit</button>
+
+              <!-- Closes the survey WITHOUT submit -->
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- CREATE SURVEY SUCCESS MODAL -->
     <div class="modal fade" id="create-success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -128,6 +155,25 @@
           </div>
           <div class="modal-body">
             <p>You've successfully created a survey!</p>
+            <!-- Closes the success WITHOUT submit -->
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATE question SUCCESS MODAL -->
+    <div class="modal fade" id="create-question-success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Success!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>You've successfully asked a question!</p>
             <!-- Closes the success WITHOUT submit -->
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
           </div>
