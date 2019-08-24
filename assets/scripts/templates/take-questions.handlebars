@@ -1,0 +1,15 @@
+{{#each questions as |question|}}
+  <div class="card" data-id="{{question._id}}">
+    <div class="card-body">
+       <h5 class="card-title">{{question.question}}</h5>
+
+       <!-- <p class="card-text">{{habit.streak}}</p> -->
+       <form class="answer">
+         <!-- <input type="text" name="answer" placeholder="enter your response here" value="yes" class="paragraph_response"> -->
+         <!-- <br>
+         <button type="click" class="question-response btn-primary" data-id="{{question._id}}" data-question="{{question.question}}" data-yes="{{question.yes}}" data-no="{{question.no}}">Submit</button> -->
+       </form>
+    </div>
+  </div>
+  <!-- {{/if}} -->
+  {{/each}}

@@ -49,9 +49,10 @@ $(() => {
   $('.hide-on-signed-out').hide()
 
   $('#create-question-link').on('click', () => $('#create-question-modal').modal('show'))
-  $('#answer-questions').on('click', questionEvents.onAskQuestion)
+  $('#show-my-questions').on('click', questionEvents.onGetQuestions)
+  $('#take-questions').on('click', questionEvents.onTakeQuestions)
 
-  // pull in event handlers from surveys/events.js
+  // pull in event handlers from  question and surveys/events.js
   surveyEvents.addHandlers()
   questionEvents.addQuestionHandlers()
 })
