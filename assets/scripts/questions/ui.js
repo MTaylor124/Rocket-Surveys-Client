@@ -11,6 +11,9 @@ const getQuestionSuccess = data => {
   const showMyQuestions = showQuestionsTemplate({ questions: usersQuestions })
   $('.content').show()
   $('.content').html(showMyQuestions)
+  if (!(showMyQuestions)) {
+    $('.content').html('<p class="listofresponses">You dont\'t have any questions. Use the drop down menu to ask one now!</p>')
+  }
   $('.dropdown-item').show()
   $('#show-my-questions').hide()
 }

@@ -10,6 +10,9 @@ const getSurveysSuccess = data => {
   const showMySurveys = showSurveysTemplate({ surveys: usersSurveys })
   $('.content').show()
   $('.content').html(showMySurveys)
+  if (!(showMySurveys)) {
+    $('.content').html('<p class="listofresponses">You don\'t have any surveys. Use the drop down menu to make one now!</p>')
+  }
   $('.dropdown-item').show()
   $('#auth').hide()
   $('#show-my-surveys').hide()
