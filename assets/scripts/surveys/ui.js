@@ -10,16 +10,16 @@ const getSurveysSuccess = data => {
   const showMySurveys = showSurveysTemplate({ surveys: usersSurveys })
   $('.content').show()
   $('.content').html(showMySurveys)
+  $('.dropdown-item').show()
   $('#auth').hide()
   $('#show-my-surveys').hide()
-  $('#take-surveys').show()
 }
 
 const takeSurveySuccess = data => {
   $('.content').html('')
   const showOthersSurveys = takeSurveysTemplate({ surveys: data.surveys })
   $('.content').html(showOthersSurveys)
-  $('#show-my-surveys').show()
+  $('.dropdown-item').show()
   $('#take-surveys').hide()
 }
 

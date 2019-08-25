@@ -11,9 +11,8 @@ const getQuestionSuccess = data => {
   const showMyQuestions = showQuestionsTemplate({ questions: usersQuestions })
   $('.content').show()
   $('.content').html(showMyQuestions)
-  // $('#auth').hide()
-  // $('#show-my-surveys').hide()
-  // $('#take-surveys').show()
+  $('.dropdown-item').show()
+  $('#show-my-questions').hide()
 }
 
 const createQuestionSuccessful = () => {
@@ -41,9 +40,9 @@ const deleteQuestionFailure = (data) => {
 const takeQuestionSuccess = data => {
   $('.content').html('')
   const showAllQuestions = takeQuestionsTemplate({ questions: data.questions })
+  $('.dropdown-item').show()
+  $('#take-questions').hide()
   $('.content').html(showAllQuestions)
-  // $('#show-my-surveys').show()
-  // $('#take-surveys').hide()
 }
 
 module.exports = {
