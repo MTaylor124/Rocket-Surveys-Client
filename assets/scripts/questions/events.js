@@ -70,15 +70,36 @@ const addQuestionHandlers = () => {
   $('body').on('submit', '.edit-question', onUpdateQuestion)
   $('body').on('click', '.delete-question-button', onDeleteQuestion)
   $('#create-question').on('submit', onCreateQuestion)
-  // $('body').on('click', '.survey-response', onAnswerQuestion)
+  $('body').on('submit', '.answerquestion', onAnswerQuestion)
 }
 
+const onAnswerQuestion = event => {
+  event.preventDefault()
+  const questionId = $(event.target).data('id')
+  const form = event.target
+  const questionResponse = getFormFields(form)
+  const newresponse = JSON.stringify(questionResponse)
+  const parsedResponse = JSON.parse(newresponse)
+  const finalString = parsedResponse.answer
+  api.answerQuestion(questionId, finalString)
+    .then(console.log)
+    .catch(console.log)
+  //   .then(() => {
+  //     onTakeSurveys(event)
+  //     $('#settings-modal').modal('hide')
+  //   })
+  //   // .then($('#authNotification').text('Response recorded.'))
+  //   .then(setTimeout(function () {
+  //     $('#authNotification').text('')
+  //   }, 2000))
+  //   .catch(ui.failure)
+}
 module.exports = {
   addQuestionHandlers,
   onCreateQuestion,
   onGetQuestions,
   onDeleteQuestion,
-  onTakeQuestions
+  onTakeQuestions,
   // onTakeQuestions,
-  // onAnswerSurvey
+  onAnswerQuestion
 }

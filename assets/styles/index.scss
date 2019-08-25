@@ -8,6 +8,11 @@
 //   font-size: 25px;
 // }
 
+.question-handlebars {
+  display: flex;
+  justify-content: center;
+}
+
 h1, #main-auth, #authNotification, #sign-up, #sign-in {
   display: flex;
   justify-content: center;

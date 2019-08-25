@@ -56,10 +56,28 @@ const takeQuestions = function () {
     }
   })
 }
+
+const answerQuestion = function (questionId, questionResponse) {
+  return $.ajax({
+    url: config.apiUrl + '/paragraphs',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      paragraph: {
+        answer: questionResponse,
+        question: questionId
+      }
+    }
+  })
+}
+
 module.exports = {
   createQuestion,
   getQuestions,
   deleteQuestion,
   updateQuestion,
-  takeQuestions
+  takeQuestions,
+  answerQuestion
 }

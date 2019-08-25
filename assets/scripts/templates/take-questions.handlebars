@@ -2,14 +2,13 @@
   <div class="card" data-id="{{question._id}}">
     <div class="card-body">
        <h5 class="card-title">{{question.question}}</h5>
+       <form class="answerquestion" data-id="{{question._id}}">
 
-       <!-- <p class="card-text">{{habit.streak}}</p> -->
-       <form class="answer">
-         <!-- <input type="text" name="answer" placeholder="enter your response here" value="yes" class="paragraph_response"> -->
-         <!-- <br>
-         <button type="click" class="question-response btn-primary" data-id="{{question._id}}" data-question="{{question.question}}" data-yes="{{question.yes}}" data-no="{{question.no}}">Submit</button> -->
+         <textarea class="paragraph" data-question="{{question.question}}" name="answer" cols="80" rows="4"/>
+         <br/>
+
+         <button type="click" class="question-response btn-primary" data-id="{{question._id}}" data-question="{{question.question}}">Submit</button>
        </form>
     </div>
   </div>
-  <!-- {{/if}} -->
   {{/each}}

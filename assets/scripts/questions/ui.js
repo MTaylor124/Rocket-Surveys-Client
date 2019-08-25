@@ -1,6 +1,6 @@
 'use strict'
 
-// const takeQuestionsTemplate = require('../templates/take-questions.handlebars')
+const takeQuestionsTemplate = require('../templates/take-questions.handlebars')
 // const showSurveysTemplate = require('../templates/view-surveys.handlebars')
 const showQuestionsTemplate = require('../templates/view-questions.handlebars')
 const store = require('./../store')
@@ -8,6 +8,12 @@ const store = require('./../store')
 const getQuestionSuccess = data => {
   $('.content').html('')
   // console.log(data.questions)
+  // const userAnswers =
+  // for (let i = 0; i < data.questions.length; i++) {
+  //
+  // }
+  // console.log(data.questions)
+  // const questionResponses = f
   const usersQuestions = data.questions.filter(question => question.owner === store.user._id)
   const showMyQuestions = showQuestionsTemplate({ questions: usersQuestions })
   $('.content').show()
@@ -41,9 +47,9 @@ const deleteQuestionFailure = (data) => {
 
 const takeQuestionSuccess = data => {
   $('.content').html('')
-  alert('you did the thing')
-  // const showOthersQuestions = takeQuestionsTemplate({ questions: data.questions })
-  // $('.content').html(showOthersQuestions)
+  console.log(data.questions)
+  const showAllQuestions = takeQuestionsTemplate({ questions: data.questions })
+  $('.content').html(showAllQuestions)
   // $('#show-my-surveys').show()
   // $('#take-surveys').hide()
 }
