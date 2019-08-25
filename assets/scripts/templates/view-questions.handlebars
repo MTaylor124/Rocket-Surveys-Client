@@ -28,8 +28,13 @@
       </div>
     </div>
   </div>
+
+  {{#if question.paragraphs}}
   <p class="listofresponses">RESPONSES:</p>
     {{#each question.paragraphs as |response|}}
     <p class="card-text question-handlebars">{{response.answer}}</p>
     {{/each}}
+    {{else}}
+    <p class="listofresponses">No responses yet</p>
+    {{/if}}
   {{/each}}
