@@ -78,18 +78,25 @@ const onAnswerQuestion = event => {
   const questionId = $(event.target).data('id')
   const form = event.target
   const questionResponse = getFormFields(form)
-  const newresponse = JSON.stringify(questionResponse)
-  const parsedResponse = JSON.parse(newresponse)
-  const finalString = parsedResponse.answer
-  api.answerQuestion(questionId, finalString)
-    .then(() => {
-      onTakeQuestions(event)
-    })
-    .then($('#authNotification').text('Response recorded.'))
-    .then(setTimeout(function () {
+  if (questionResponse.answer !== '') {
+    const newresponse = JSON.stringify(questionResponse)
+    const parsedResponse = JSON.parse(newresponse)
+    const finalString = parsedResponse.answer
+    api.answerQuestion(questionId, finalString)
+      .then(() => {
+        onTakeQuestions(event)
+      })
+      .then($('#authNotification').text('Response recorded.'))
+      .then(setTimeout(function () {
+        $('#authNotification').text('')
+      }, 2000))
+      .catch(ui.failure)
+  } else {
+    $('#authNotification').text('Please enter a response')
+    setTimeout(function () {
       $('#authNotification').text('')
-    }, 2000))
-    .catch(ui.failure)
+    }, 2000)
+  }
 }
 module.exports = {
   addQuestionHandlers,
