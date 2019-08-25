@@ -34,6 +34,7 @@ const onUpdateSurvey = (event) => {
   const formData = getFormFields(form)
   api.updateSurvey(id, formData)
     .then(() => {
+      $('body').removeClass('modal-open')
       // need to "re-get" to see newly updated surveys
       onGetSurveys(event)
       $('#settings-modal').modal('hide')

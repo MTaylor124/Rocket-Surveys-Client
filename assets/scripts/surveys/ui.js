@@ -39,6 +39,7 @@ const deleteSurveyFailure = (data) => {
 const updateSurveySuccess = (data) => {
   const showSurveysHtml = showSurveysTemplate({ surveys: data.surveys })
   $('.content').html(showSurveysHtml)
+  $('body').removeClass('modal-open')
 }
 
 const createSurveySuccessful = () => {

@@ -53,6 +53,7 @@ const onUpdateQuestion = (event) => {
   const formData = getFormFields(form)
   api.updateQuestion(id, formData)
     .then(() => {
+      $('body').removeClass('modal-open')
       onGetQuestions(event)
       $('#settings-modal').modal('hide')
       $('.modal-backdrop').hide()
