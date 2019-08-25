@@ -82,17 +82,14 @@ const onAnswerQuestion = event => {
   const parsedResponse = JSON.parse(newresponse)
   const finalString = parsedResponse.answer
   api.answerQuestion(questionId, finalString)
-    .then(console.log)
-    .catch(console.log)
-  //   .then(() => {
-  //     onTakeSurveys(event)
-  //     $('#settings-modal').modal('hide')
-  //   })
-  //   // .then($('#authNotification').text('Response recorded.'))
-  //   .then(setTimeout(function () {
-  //     $('#authNotification').text('')
-  //   }, 2000))
-  //   .catch(ui.failure)
+    .then(() => {
+      onTakeQuestions(event)
+    })
+    .then($('#authNotification').text('Response recorded.'))
+    .then(setTimeout(function () {
+      $('#authNotification').text('')
+    }, 2000))
+    .catch(ui.failure)
 }
 module.exports = {
   addQuestionHandlers,

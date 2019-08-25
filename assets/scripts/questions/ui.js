@@ -7,13 +7,6 @@ const store = require('./../store')
 
 const getQuestionSuccess = data => {
   $('.content').html('')
-  // console.log(data.questions)
-  // const userAnswers =
-  // for (let i = 0; i < data.questions.length; i++) {
-  //
-  // }
-  // console.log(data.questions)
-  // const questionResponses = f
   const usersQuestions = data.questions.filter(question => question.owner === store.user._id)
   const showMyQuestions = showQuestionsTemplate({ questions: usersQuestions })
   $('.content').show()
@@ -47,7 +40,6 @@ const deleteQuestionFailure = (data) => {
 
 const takeQuestionSuccess = data => {
   $('.content').html('')
-  console.log(data.questions)
   const showAllQuestions = takeQuestionsTemplate({ questions: data.questions })
   $('.content').html(showAllQuestions)
   // $('#show-my-surveys').show()
